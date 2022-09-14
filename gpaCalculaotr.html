@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>GPA CALCULATOR</title>
+</head>
+
+<body>
+    <div class="divLogin">
+
+        <table>
+            <th colspan="2">GPA CALCULATOR</th>
+            <tr>
+                <td>1st Semester GPA : </td>
+                <td><input type="text" class="entries" placeholder="1st Semester GPA"id="firstGPA" autofocus></td>
+            </tr>
+
+            <tr>
+                <td>2nd Semester CGPA : </td>
+                <td><input type="text" class="entries" placeholder="2nd Semester CGPA"id="secCGPA" autofocus></td>
+            </tr>
+
+            <tr>
+                <td>3rd Semester CGPA : </td>
+                <td><input type="text" class="entries" placeholder="3rd Semester CGPA"id="thirdCGPA" autofocus></td>
+            </tr>
+
+
+        </table>
+    
+        <button id="btnLogin" onclick="calc()">Calculate</button>                
+        <label id="lblStatus"></label>
+    
+    </div>
+
+    <!-- CSS -->
+    <style>
+    .divLogin{
+        display: inline-block;
+    }
+    .entries{
+	width : 100%;
+	}
+    #btnLogin{
+        margin: 2px 1px;
+        width: 99%;
+    }
+    </style>
+
+    <!-- Script -->
+    <script>
+        function removeStatus(){
+            var status =  document.querySelector("#lblStatus");
+            status.innerHTML = "";
+        }
+        function calc(){
+		var firstCGPA = parseFloat(document.querySelector("#firstGPA").value);
+		var secCGPA = parseFloat(document.querySelector("#secCGPA").value);
+		var thirdCGPA = parseFloat(document.querySelector("#thirdCGPA").value);
+
+		var firstGPA = firstCGPA;
+		var secGPA = ((30*secCGPA) - (firstGPA*14))/16;
+		var thirdGPA = ((47*thirdCGPA) - ((firstGPA*14) + (secGPA * 16)))/17;
+
+		var result = "\n1st GPA : " + firstGPA.toFixed(2);
+		result += "\n 2nd GPA : " + secGPA.toFixed(2);
+		result += "\n 3rd GPA : " + thirdGPA.toFixed(2);
+	        
+		var status =  document.querySelector("#lblStatus");
+		status.innerHTML = (result);
+
+	}
+    </script>
+
+</body>
+
+</html>
